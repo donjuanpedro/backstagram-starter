@@ -7,7 +7,11 @@
 </head>
 <body>
   <div id="nav"></div>
+  <div data-bootstrap="<%= bootstrap %>"></div>
   <div id="app"></div>
+  <form action="/logout" method="POST">
+    <button type="submit">Logout</button>
+  </form>
 
   <script type="text/javascript" src="/dist/js/bundle.js"></script>
 </body>

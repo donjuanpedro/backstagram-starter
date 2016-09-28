@@ -1,9 +1,14 @@
+const http = require('http');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('./config/passport');
+const flash = require('express-flash');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
@@ -11,8 +16,19 @@ const users = require('./routes/users');
 // Set up mongoose
 const mongoose = require('mongoose');
 // You need to connect to your MongoDB here
+mongoose.connect('mongodb://localhost/backstagram-starter');
 
 const app = express();
+
+app.use(session({
+  secret:'thisIsTheSecret',
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

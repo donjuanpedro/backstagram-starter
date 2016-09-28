@@ -1,0 +1,16 @@
+<h2>Register</h2>
+<h3><%=messages.error%></h3>
+<form action="/register" method="post">
+  <label>Username
+    <input type="text" name="username"/>
+  </label>
+  <br /><br />
+  <label>Password
+    <input type="password" name="password"/>
+  </label>
+  <br /><br />
+  <button type="submit">Submit</button>
+</form>
+<a href="/login">
+  <button type="submit">Return to Login</button>
+</a>
