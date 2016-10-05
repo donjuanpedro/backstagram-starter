@@ -28,7 +28,7 @@ module.exports = {
 
   create: function(req, res, next) {
     var foundUser;
-    var createdTweet;
+    var createdPhoto;
 
     UserModel.findById(req.user).exec()
       .then( user => {

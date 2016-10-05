@@ -5,7 +5,7 @@ const PhotoItemView = Backbone.View.extend({
   el: `<li></li>`,
 
   template: _.template(`
-    <a href = "#user/<%= photo.get('user').get('_id') %>">
+    <a href ="#user/<%= photo.get('user').get('_id') %>">
       <%= photo.get('user').escape('username') %>
     </a>
     <div><%= photo.escape('image') %> </div>

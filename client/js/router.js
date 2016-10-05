@@ -9,10 +9,10 @@ let currentView;
 const Router = Backbone.Router.extend({
   routes: {
     "" : "photos",
-    "users/:id" : "user",
+    "user/:id" : "user",
     "*photos" : "photos",
   },
-  
+
   initialize() {
     $('#nav').html(
       new NavBarView().render().el
