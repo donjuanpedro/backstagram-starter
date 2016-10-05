@@ -30,7 +30,7 @@ module.exports = {
     var foundUser;
     var createdTweet;
 
-    UserModel.FindById(req.user).exec()
+    UserModel.findById(req.user).exec()
       .then( user => {
         foundUser = user;
         return new PhotoModel({

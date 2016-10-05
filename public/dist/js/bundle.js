@@ -40,8 +40,19 @@ const PhotoModel = Backbone.Model.extend({
 module.exports = PhotoModel;
 
 },{"./UserModel":4,"backbone":10}],4:[function(require,module,exports){
+const Backbone = require('backbone');
 
-},{}],5:[function(require,module,exports){
+const UserModel = Backbone.Model.extend({
+  idAttribute: '_id',
+  urlRoot: '/users',
+  defaults: {
+    photos: new Backbone.Collection()
+  }
+});
+
+module.exports = UserModel;
+
+},{"backbone":10}],5:[function(require,module,exports){
 const Backbone = require('backbone');
 const UserModel = require('./models/UserModel');
 const UserView = require('./views/UserView');
