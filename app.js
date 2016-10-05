@@ -12,9 +12,11 @@ const flash = require('express-flash');
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
+const photos = require('./routes/photos');
 
 // Set up mongoose
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 // You need to connect to your MongoDB here
 mongoose.connect('mongodb://localhost/backstagram-starter');
 
@@ -44,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/photos', photos);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

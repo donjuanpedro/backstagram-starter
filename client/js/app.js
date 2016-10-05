@@ -1,19 +1,11 @@
 const $ = require('jquery');
-const NavBarView = require('./views/NavBarView');
+const Backbone = require('backbone');
+const Router = require('./router');
 
 // Set jQuery in the window
 window.$ = window.jQuery = $;
-
 // Require bootstrap after jQuery is defined on window
-require('bootstrap');
+require('bootstrap-sass');
 
-// Set Nav, will probably want to move this to your router eventually!
-const nav = document.querySelector('#nav');
-nav.appendChild(new NavBarView().render().el);
-
-// Set greeting
-const app = document.querySelector('#app');
-const greeting = document.createElement('h2');
-greeting.innerText = 'Express Backbone Starter App!';
-
-app.appendChild(greeting);
+const router = new Router();
+Backbone.history.start();
