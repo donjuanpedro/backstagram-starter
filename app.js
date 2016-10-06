@@ -11,6 +11,7 @@ const passport = require('./config/passport');
 const flash = require('express-flash');
 
 const routes = require('./routes/index');
+const middleware = require('./routes/middleware');
 const users = require('./routes/users');
 const photos = require('./routes/photos');
 
@@ -47,6 +48,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/photos', photos);
+app.get('/protected', middleware.auth, function(req, res, next) {
+  return res.json('I am a protected resource!');
+});
 
 app.get('*', function(req, res, next) {
   return res.render('index');
